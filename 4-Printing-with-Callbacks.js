@@ -5,8 +5,8 @@ const requestOptions = {
   path: process.argv.slice(2)[1]
 };
 
-function getHTML (callback) {
-  https.get(requestOptions, (res) => {
+function getHTML (options, callback) {
+  https.get(options, (res) => {
     let buffer = '';
     res.setEncoding('utf-8');
     res.on('data', (data) => {
@@ -23,4 +23,4 @@ function printHTML (html) {
   console.log(html);
 }
 
-getHTML(printHTML);
+getHTML(requestOptions,printHTML);
